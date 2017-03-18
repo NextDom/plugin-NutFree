@@ -255,11 +255,11 @@ class Nut_free extends eqLogic {
 	
 		if ($this->getIsEnable()){
 			$ip = $this->getConfiguration('addressip');
-			$user = $this->getConfiguration('user');
-			$pass = $this->getConfiguration('password');
-			$port = $this->getConfiguration('portssh');
 			$ups = $this->getConfiguration('UPS');
-			$equipement = $this->getName();
+			$ssh_op = $this->getConfiguration('SSH_select');
+			$equipement = $this->getName();			
+		}
+		if ($ssh_op == '0'){
 			
 			$cnx_ssh = 'OK';
 			
@@ -276,10 +276,6 @@ class Nut_free extends eqLogic {
 										
 					/* Listing des commandes*/
 					
-					
-					
-					
-					
 					/* Action*/
 					$Marque_info = exec($Marque_infocmd);
 					$Model = exec( $Modelcmd); 
@@ -292,7 +288,88 @@ class Nut_free extends eqLogic {
 					$batt_runtime = exec($batt_runtimecmd);				
 					$Model= $Marque_info." ".$Model;
 					//$Model= $cnx_ssh;
+			}
+			
+			if ($ssh_op == '1'){
+			$user = $this->getConfiguration('user');
+			$pass = $this->getConfiguration('password');
+			$port = $this->getConfiguration('portssh');
+			
+				if (!$connection = ssh2_connect($ip,$port)){
+					log::add('Monitoring', 'error', 'connexion SSH KO pour '.$equipement);
+					$cnx_ssh = 'KO';
+				}else{
+					if (!ssh2_auth_password($connection,$user,$pass)){
+					log::add('Monitoring', 'error', 'Authentification SSH KO pour '.$equipement);
+					$cnx_ssh = 'KO';
+					}else{
+						$cnx_ssh = 'OK';
+											
+						/* Listing des commandes*/
+						$Marque_infocmd = "upsc ".$ups." device.mfr";
+						$Modelcmd = "upsc ".$ups." device.model";
+						$input_voltcmd = "upsc ".$ups." input.voltage";
+						$input_freqcmd = "upsc ".$ups." input.frequency";
+						$output_voltcmd = "upsc ".$ups." output.voltage";
+						$output_freqcmd = "upsc ".$ups." output.frequency";
+						$output_powercmd = "upsc ".$ups." ups.power";
+						$batt_chargecmd = "upsc ".$ups." battery.charge";
+						$batt_runtimecmd = "upsc ".$ups." battery.runtime";
+						
+									
+						/* Action*/
+						$Marque_infooutput = ssh2_exec($connection, $Marque_infocmd); 
+						stream_set_blocking($Marque_infooutput, true);
+						$Marque_info = stream_get_contents($Marque_infooutput);
+						
+						$Modeloutput = ssh2_exec($connection, $Modelcmd); 
+						stream_set_blocking($Modeloutput, true);
+						$Model = stream_get_contents($Modeloutput);	
+						
+						$input_voltoutput = ssh2_exec($connection, $input_voltcmd); 
+						stream_set_blocking($input_voltoutput, true);
+						$input_volt = stream_get_contents($input_voltoutput);
+						
+						$input_freqoutput = ssh2_exec($connection, $input_freqcmd); 
+						stream_set_blocking($input_freqoutput, true);
+						$input_freq = stream_get_contents($input_freqoutput);
+						
+						$output_voltoutput = ssh2_exec($connection, $output_voltcmd); 
+						stream_set_blocking($output_voltoutput, true);
+						$output_volt = stream_get_contents($output_voltoutput);
+						
+						$output_freqoutput = ssh2_exec($connection, $output_freqcmd); 
+						stream_set_blocking($output_freqoutput, true);
+						$output_freq = stream_get_contents($output_freqoutput);
+						
+						$output_poweroutput = ssh2_exec($connection, $output_powercmd); 
+						stream_set_blocking($output_poweroutput, true);
+						$output_power = stream_get_contents($output_poweroutput);
+						
+						$batt_chargeoutput = ssh2_exec($connection, $batt_chargecmd); 
+						stream_set_blocking($batt_chargeoutput, true);
+						$batt_charge = stream_get_contents($batt_chargeoutput);
+						
+						$batt_runtimeoutput = ssh2_exec($connection, $batt_runtimecmd); 
+						stream_set_blocking($batt_runtimeoutput, true);
+						$batt_runtime = stream_get_contents($batt_runtimeoutput);
+									
+						$closesession = ssh2_exec($connection, 'exit'); 
+						stream_set_blocking($closesession, true);
+						stream_get_contents($closesession);
+						//close ssh ($connection);
+						
+						$connection = ssh2_connect($ip,$port);
+						ssh2_auth_password($connection,$user,$pass);
+												
+						$Model= $Marque_info." ".$Model;
+						//$Model= $cnx_ssh;
+					}
 				}
+			}
+			
+			
+		
 		if (isset($cnx_ssh)) {
 			
 				

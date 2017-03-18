@@ -113,13 +113,14 @@ $eqLogics = eqLogic::byType('Nut_free');
                 </div>
                 </div>
 							
-				<div id="deporte">
+				<div id="Conf_IP">
 				   <div class="form-group">
 					  <label class="col-md-2 control-label">{{Adresse IP}}</label>   
 					  <div class="col-md-3">
 						 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="addressip" type="text" placeholder="{{saisir l'adresse IP}}">
 					  </div>
 				   </div>
+					
 					<div class="form-group">
 					  <label class="col-md-2 control-label">{{UPS}}</label>   
 					  <div class="col-md-3">
@@ -128,11 +129,40 @@ $eqLogics = eqLogic::byType('Nut_free');
 				   </div> 
 					
 					<div class="form-group">
-					  <label class="col-md-2 control-label">{{Avec connexion SSH}}</label>   
-					  <div class="col-md-3">
-					 <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isSSH" checked/>	 
-					  </div>
+				   <label class="col-md-2 control-label">{{Avec Connexion SSH?}}</label>
+				   <div class="col-md-3">
+					 <select id="SSH_select" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="SSH_select"
+					  onchange="if(this.selectedIndex == 1) document.getElementById('SSH_op').style.display = 'block';
+					  else document.getElementById('SSH_op').style.display = 'none';">
+						 <option value="0">{{Non}}</option>
+						 <option value="1">{{Oui}}</option>
+					  </select>
+					  
 				   </div>
+				</div>
+				  
+					  <div id="SSH_op">
+					  
+					   <div class="form-group">
+						  <label class="col-md-2 control-label">{{Port SSH}}</label>   
+						  <div class="col-md-3">
+							 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="portssh" type="text" placeholder="{{saisir le port SSH}}">
+						  </div>
+					   </div>
+					   <div class="form-group">
+						  <label class="col-md-2 control-label">{{Identifiant}}</label>   
+						  <div class="col-md-3">
+							 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="user" type="text" placeholder="{{saisir le login}}">
+						  </div>
+					   </div>   
+					   <div class="form-group">
+						  <label class="col-md-2 control-label">{{Mot de passe}}</label>   
+						  <div class="col-md-3">
+							 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password" type="password" placeholder="{{saisir le password}}">
+						  </div>
+					   </div>         
+					</div>
+				
 				</div>
 				
 						

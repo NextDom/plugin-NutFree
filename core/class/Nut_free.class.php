@@ -261,7 +261,7 @@ class Nut_free extends eqLogic {
 		}
 		if ($ssh_op == '0'){
 			
-			$cnx_ssh = 'OK';
+			$cnx_ssh = '';
 			
 			$Marque_infocmd = "upsc ".$ups."@".$ip." device.mfr  > /dev/stdout 2> /dev/null";
 			$Modelcmd = "upsc ".$ups."@".$ip." device.model  > /dev/stdout 2> /dev/null";

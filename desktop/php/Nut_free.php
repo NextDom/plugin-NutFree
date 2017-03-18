@@ -125,7 +125,14 @@ $eqLogics = eqLogic::byType('Nut_free');
 					  <div class="col-md-3">
 						 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="UPS" type="text" placeholder="{{saisir le nom UPS}}">
 					  </div>
-				   </div>    
+				   </div> 
+					
+					<div class="form-group">
+					  <label class="col-md-2 control-label">{{Avec connexion SSH}}</label>   
+					  <div class="col-md-3">
+					 <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isSSH" checked/>	 
+					  </div>
+				   </div>
 				</div>
 				
 						

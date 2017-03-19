@@ -383,45 +383,61 @@ class Nut_free extends eqLogic {
 						/* Action*/
 						
 						
+						
 						$Marque_infooutput = ssh2_exec($connection, $Marque_infocmd); 
 						stream_set_blocking($Marque_infooutput, true);
 						$Marque_info = stream_get_contents($Marque_infooutput);
+						fclose($Marque_infooutput);
 						
 						$Modeloutput = ssh2_exec($connection, $Modelcmd); 
 						stream_set_blocking($Modeloutput, true);
 						$Model = stream_get_contents($Modeloutput);	
+						fclose($Modeloutput);	
 						
 						$input_voltoutput = ssh2_exec($connection, $input_voltcmd); 
 						stream_set_blocking($input_voltoutput, true);
 						$input_volt = stream_get_contents($input_voltoutput);
+						fclose($input_voltoutput);	
 						
 						$input_freqoutput = ssh2_exec($connection, $input_freqcmd); 
 						stream_set_blocking($input_freqoutput, true);
 						$input_freq = stream_get_contents($input_freqoutput);
+						fclose($input_freqoutput);						
 						
 						$output_voltoutput = ssh2_exec($connection, $output_voltcmd); 
 						stream_set_blocking($output_voltoutput, true);
 						$output_volt = stream_get_contents($output_voltoutput);
+						fclose($output_voltoutput);
 						
 						$output_freqoutput = ssh2_exec($connection, $output_freqcmd); 
 						stream_set_blocking($output_freqoutput, true);
 						$output_freq = stream_get_contents($output_freqoutput);
+						fclose($output_freqoutput);
 						
 						$output_poweroutput = ssh2_exec($connection, $output_powercmd); 
 						stream_set_blocking($output_poweroutput, true);
 						$output_power = stream_get_contents($output_poweroutput);
+						fclose($output_poweroutput);
 						
 						$batt_chargeoutput = ssh2_exec($connection, $batt_chargecmd); 
 						stream_set_blocking($batt_chargeoutput, true);
 						$batt_charge = stream_get_contents($batt_chargeoutput);
+						fclose($batt_voltoutput);
 						
 						$batt_voltoutput = ssh2_exec($connection, $batt_voltcmd); 
 						stream_set_blocking($batt_voltoutput, true);
 						$batt_volt = stream_get_contents($batt_voltoutput);
-						
+						fclose($batt_chargeoutput);
+										
 						$ups_loadoutput = ssh2_exec($connection, $ups_loadcmd); 
 						stream_set_blocking($ups_loadoutput, true);
 						$ups_load = stream_get_contents($ups_loadoutput);
+						fclose($ups_loadoutput);
+						
+						$batt_runtimeoutput = ssh2_exec($connection, $batt_runtimecmd); 
+						stream_set_blocking($batt_runtimeoutput, true);
+						$batt_runtime = stream_get_contents($batt_runtimeoutput);
+						fclose($batt_runtimeoutput);
 						
 						$connection = ssh2_connect($ip,$port);
 						ssh2_auth_password($connection,$user,$pass);
@@ -432,10 +448,10 @@ class Nut_free extends eqLogic {
 						stream_get_contents($closesession);
 						//close ssh ($connection);
 						
-						
+
 												
 						$Model= $Marque_info." ".$Model;
-						//$Model= $ups;
+					//	$Model= $batt_runtime;
 						
 						
 					}

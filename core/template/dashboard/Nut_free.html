@@ -21,8 +21,8 @@
 	</div>
 	
 	<div class="tooltips" data-cmd_id="#input_voltid#" style="margin-left:5px;display: #input_volt_display#;">
-			<span title="Tension en entrée" style="width:15px;">Tension en entrée: </span>
-			<span id="input_volt#id#"></span>
+			<span title="Tension en entrée" style="width:15px;">Tension en entrée:</span>
+			<span id="input_volt#id#"></span><span> V</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
@@ -32,7 +32,7 @@
 	
 	<div class="tooltips" data-cmd_id="#input_freqid#" style="margin-left:5px;display: #input_freq_display#;">
 			<span title="Fréquence d'entrée (input_freq)" style="width:15px;">Fréquence d'entrée: </span>
-			<span id="input_freq#id#"></span>
+			<span id="input_freq#id#"></span><span> Hz</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
@@ -41,7 +41,7 @@
     </script>
 	<div class="tooltips" data-cmd_id="#output_voltid#" style="margin-left:5px;display: #output_volt_display#;">
 			<span title="Tension de sortie (output_volt)" style="min-width:15px;">Tension de sortie: </span>
-			<span id="output_volt#id#"></span>
+			<span id="output_volt#id#"></span><span> V</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
@@ -50,7 +50,7 @@
     </script>
 	<div class="tooltips"  data-cmd_id="#output_freqid#" style="margin-left:5px;display: #output_freq_display#;">
 			<span title="Fréquence de sortie (output_freq)" style="width:15px;">Fréquence de sortie: </span>
-			<span id="output_freq#id#"></span>
+			<span id="output_freq#id#"></span><span> Hz</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
@@ -60,7 +60,7 @@
 	
 	<div class="tooltips"  data-cmd_id="#output_powerid#" style="margin-left:5px;display: #output_power_display#;">
 			<span title="Puissance de sortie (output_freq)" style="width:15px;">Puissance de sortie: </span>
-			<span id="output_power#id#"></span>
+			<span id="output_power#id#"></span><span> W</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
@@ -69,16 +69,34 @@
     </script>
 	<div class="tooltips"  data-cmd_id="#batt_chargeid#" style="margin-left:5px;display: #batt_charge_display#;">
 			<span title="Niveau de charge batterie (batt_charge)" style="width:15px;">Niveau de charge batterie: </span>
-			<span id="batt_charge#id#"></span>
+			<span id="batt_charge#id#"></span><span> %</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
 			$('#batt_charge#id#').append('<span data-cmd_id="#batt_chargeid#" class="history cursor">#batt_charge#</span>');
 		}
     </script>
+	<div class="tooltips"  data-cmd_id="#batt_voltid#" style="margin-left:5px;display: #batt_volt_display#;">
+			<span title="Tension de la batterie (batt_volt)" style="width:15px;">Tension de la batterie: </span>
+			<span id="batt_volt#id#"></span><span> V</span>
+	</div>
+	<script>
+		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
+			$('#batt_volt#id#').append('<span data-cmd_id="#batt_voltid#" class="history cursor">#batt_volt#</span>');
+		}
+    </script>
+	<div class="tooltips"  data-cmd_id="#ups_loadid#" style="margin-left:5px;display: #ups_load_display#;">
+			<span title="Charge Onduleur (ups_load)" style="width:15px;">Charge de l'onduleur: </span>
+			<span id="ups_load#id#"></span><span> %</span>
+	</div>
+	<script>
+		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
+			$('#ups_load#id#').append('<span data-cmd_id="#ups_loadid#" class="history cursor">#ups_load#</span>');
+		}
+    </script>
 	<div class="tooltips"  data-cmd_id="#batt_runtimeid#" style="margin-left:5px;display: #batt_runtime_display#;">
 			<span title="Temps restant sur batterie (batt_runtime)" style="width:15px;">Temps restant sur batterie: </span>
-			<span id="batt_runtime#id#"></span>
+			<span id="batt_runtime#id#"></span><span> s</span>
 	</div>
 	<script>
 		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {

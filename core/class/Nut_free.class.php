@@ -422,12 +422,12 @@ class Nut_free extends eqLogic {
 						$batt_chargeoutput = ssh2_exec($connection, $batt_chargecmd); 
 						stream_set_blocking($batt_chargeoutput, true);
 						$batt_charge = stream_get_contents($batt_chargeoutput);
-						fclose($batt_voltoutput);
+						fclose($batt_chargeoutput);
 						
 						$batt_voltoutput = ssh2_exec($connection, $batt_voltcmd); 
 						stream_set_blocking($batt_voltoutput, true);
 						$batt_volt = stream_get_contents($batt_voltoutput);
-						fclose($batt_chargeoutput);
+						fclose($batt_voltoutput);
 										
 						$ups_loadoutput = ssh2_exec($connection, $ups_loadcmd); 
 						stream_set_blocking($ups_loadoutput, true);

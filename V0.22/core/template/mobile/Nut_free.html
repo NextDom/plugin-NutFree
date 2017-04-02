@@ -9,26 +9,11 @@
 			if ('#cnx_ssh#' == 'KO') {
 				$('#iconSSH#id#').append('<i title="Connexion SSH KO" class="fa fa-times tooltips" style="font-size : 1.1em;color: #FF0000;"></i>');
 			}
-		</script>  
-		
-		<span id="iconLine#id#" style="float: left;width:25px"></span>
-		<script>
-			if ('#ups_line#' == 'OK') {
-				$('#ups_line#id#').append('<i title="Onduleur en ligne" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
-			}
-			if ('#ups_line#' == 'KO') {
-				$('#iconLine#id#').append('<i title="Onduleur OFFLINE" class="fa fa-times tooltips" style="font-size : 1.1em;color: #FF0000;"></i>');
-			}
-		</script>    
-		      
+		</script>        
 </center>
 	<div class="cmd tooltips" style="margin-left:5px;display: #Model_display#;">
 			<span title="UPS Model" style="min-width:15px"></span>
 			<span>Marque: #Model#</span>
-	</div>
-	<div class="cmd tooltips" style="margin-left:5px;display: #ups_line#;">
-			<span title="UPS Mode" style="min-width:15px"></span>
-			<span>Mode: #ups_line#</span>
 	</div>
 	<div class="cmd tooltips" style="margin-left:5px;display: #input_volt_display#;">
 			<span title="Tension d'entrée (input_volt)" style="min-width:15px;"></span>

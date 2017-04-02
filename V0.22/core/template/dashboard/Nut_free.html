@@ -5,13 +5,19 @@
 		<span id="iconSSH#id#" style="float: right;width:25px"></span>
 		<script>
 			if ('#cnx_ssh#' == 'OK') {
+				if ('#ssh_op#' == '1'){
 				$('#iconSSH#id#').append('<i title="Connexion SSH OK" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+			} 
+			} 
+			if ('#cnx_ssh#' == 'OK'){
+			if (('#ssh_op#' == '0')||('#ssh_op#' == '')){
+				$('#iconSSH#id#').append('<i title="Sans connexion SSH" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+			} 
 			}
 			if ('#cnx_ssh#' == 'KO') {
 				$('#iconSSH#id#').append('<i title="Connexion SSH KO" class="fa fa-times tooltips" style="font-size : 1.1em;color: #FF0000;"></i>');
 			}
-		</script>   
-		      
+		</script>        
 </center>
 
 	
@@ -20,11 +26,6 @@
 			<span title="UPS Model" style="min-width:15px"></span>
 			<span>Marque: #Model#</span>
 	</div>
-	
-	<div class="cmd tooltips" style="margin-left:5px;display: #ups_line#;">
-			<span title="UPS Mode" style="min-width:15px"></span>
-			<span>Mode: #ups_line#</span>
-	</div>	
 	
 	<div class="tooltips" data-cmd_id="#input_voltid#" style="margin-left:5px;display: #input_volt_display#;">
 			<span title="Tension en entrée" style="width:15px;">Tension en entrée:</span>

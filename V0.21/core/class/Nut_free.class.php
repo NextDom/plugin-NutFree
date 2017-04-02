@@ -41,7 +41,7 @@ class Nut_free extends eqLogic {
 		if (file_exists('/tmp/dependancy_Nut_free_in_progress')) {
 			$return['state'] = 'in_progress';
 		} else {
-			if (exec('dpkg-query -l nut-client | wc -l') != 0) {
+			if (exec('php -m | grep ssh2 | wc -l') != 0) {
 				$return['state'] = 'ok';
 			} else {
 				$return['state'] = 'nok';

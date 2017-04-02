@@ -2,7 +2,7 @@
   <center class="widget-name"><strong><a href="#eqLink#" style="font-size : 1.1em;#hideEqLogicName#">#name_display#</strong></a>
   <span style="font-size: 0.85em;position: relative;top:-2px;">#object_name#</span>
 		
-		<span id="iconSSH#id#" style="float: right;width:25px"></span>
+		<span id="iconUPS_line#id#" style="float: left;width:25px"></span><span id="iconSSH#id#" style="float: right;width:25px"></span>
 		<script>
 			if ('#cnx_ssh#' == 'OK') {
 				if ('#ssh_op#' == '1'){
@@ -17,6 +17,14 @@
 			if ('#cnx_ssh#' == 'KO') {
 				$('#iconSSH#id#').append('<i title="Connexion SSH KO" class="fa fa-times tooltips" style="font-size : 1.1em;color: #FF0000;"></i>');
 			}
+		
+			if (('#ups_line#' == 'OL CHRG')||('#ups_line#' == 'OL')) {
+				
+				$('#iconUPS_line#id#').append('<i title="En ligne" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+			} else {
+			$('#iconUPS_line#id#').append('<i title="Hors ligne" class="fa fa-check tooltips" style="font-size : 1.1em;color: #FF0000;" ></i>');
+			}
+			
 		</script>        
 </center>
 
@@ -26,7 +34,15 @@
 			<span title="UPS Model" style="min-width:15px"></span>
 			<span>Marque: #Model#</span>
 	</div>
-	
+	<div class="tooltips" data-cmd_id="#ups_lineid#" style="margin-left:5px;display: #ups_line_display#;">
+			<span title="UPS MODE" style="width:15px;">Mode:</span>
+			<span id="ups_line#id#"></span><span></span>
+	</div>
+	<script>
+		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
+			$('#ups_line#id#').append('<span data-cmd_id="#ups_lineid#" class="history cursor">#ups_line#</span>');
+		}
+    </script>
 	<div class="tooltips" data-cmd_id="#input_voltid#" style="margin-left:5px;display: #input_volt_display#;">
 			<span title="Tension en entrée" style="width:15px;">Tension en entrée:</span>
 			<span id="input_volt#id#"></span><span> V</span>

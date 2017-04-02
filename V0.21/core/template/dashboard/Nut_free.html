@@ -5,7 +5,14 @@
 		<span id="iconSSH#id#" style="float: right;width:25px"></span>
 		<script>
 			if ('#cnx_ssh#' == 'OK') {
+				if ('#ssh_op#' == '1'){
 				$('#iconSSH#id#').append('<i title="Connexion SSH OK" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+			} 
+			} 
+			if ('#cnx_ssh#' == 'OK'){
+			if (('#ssh_op#' == '0')||('#ssh_op#' == '')){
+				$('#iconSSH#id#').append('<i title="Sans connexion SSH" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+			} 
 			}
 			if ('#cnx_ssh#' == 'KO') {
 				$('#iconSSH#id#').append('<i title="Connexion SSH KO" class="fa fa-times tooltips" style="font-size : 1.1em;color: #FF0000;"></i>');

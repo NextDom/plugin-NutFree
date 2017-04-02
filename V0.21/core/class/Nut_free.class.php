@@ -21,7 +21,7 @@ require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class Nut_free extends eqLogic {
 
-    public static function cron5() {
+    public static function cron() {
 		foreach (eqLogic::byType('Nut_free') as $Nut_free) {
 			$Nut_free->getInformations();
 			$mc = cache::byKey('Nut_freeWidgetmobile' . $Nut_free->getId());
@@ -41,7 +41,7 @@ class Nut_free extends eqLogic {
 		if (file_exists('/tmp/dependancy_Nut_free_in_progress')) {
 			$return['state'] = 'in_progress';
 		} else {
-			if (exec('php -m | grep ssh2 | wc -l') != 0) {
+			if (exec('dpkg-query -l nut-client | wc -l') != 0) {
 				$return['state'] = 'ok';
 			} else {
 				$return['state'] = 'nok';
@@ -180,6 +180,19 @@ class Nut_free extends eqLogic {
 			$Nut_freeCmd->setSubType('numeric');
 			$Nut_freeCmd->save();
 		
+		$Nut_freeCmd = $this->getCmd(null, 'ssh_op');
+		if (!is_object($Nut_freeCmd)) {
+			$Nut_freeCmd = new Nut_freeCmd();
+		}
+			$Nut_freeCmd->setName(__('SSH OPTION', __FILE__));
+			$Nut_freeCmd->setEqLogic_id($this->getId());
+			$Nut_freeCmd->setLogicalId('ssh_op');
+			 $Nut_freeCmd->setConfiguration('data', 'ssh_op');
+			$Nut_freeCmd->setType('info');
+			$Nut_freeCmd->setSubType('numeric');
+			$Nut_freeCmd->save();
+		
+		
 		
 		$Nut_freeCmd = $this->getCmd(null, 'cnx_ssh');
 		if (!is_object($Nut_freeCmd)) {
@@ -268,6 +281,11 @@ class Nut_free extends eqLogic {
 		$replace['#batt_runtimeid#'] = is_object($batt_runtime) ? $batt_runtime->getId() : '';
 		$replace['#batt_runtime_display#'] = (is_object($batt_runtime) && $batt_runtime->getIsVisible()) ? "#batt_runtime_display#" : "none";
 		
+		
+		$ssh_op = $this->getCmd(null,'ssh_op');
+		$replace['#ssh_op#'] = (is_object($ssh_op)) ? $ssh_op->execCmd() : '';
+		$replace['#ssh_opid#'] = is_object($ssh_op) ? $ssh_op->getId() : '';
+		
 		$cnx_ssh = $this->getCmd(null,'cnx_ssh');
 		$replace['#cnx_ssh#'] = (is_object($cnx_ssh)) ? $cnx_ssh->execCmd() : '';
 		$replace['#cnx_sshid#'] = is_object($cnx_ssh) ? $cnx_ssh->getId() : '';
@@ -339,17 +357,16 @@ class Nut_free extends eqLogic {
 			$pass = $this->getConfiguration('password');
 			$port = $this->getConfiguration('portssh');
 			
-			//if (($ups=='')&&($ssh_op == '1')){
-								//	$ups_cmd="upsc -l";
-								//$upsoutput = ssh2_exec($connection, $ups_cmd); 
-								//stream_set_blocking($upsoutput, true);
-								//ssh2_exec($connection, 'exit');
-								//unset($connection);
-							//	$ups_ssh = stream_get_contents($upsoutput);
-							//	$ups=$ups_ssh;
-							//$closesession = ssh2_exec($connection, 'exit'); 
-							//	stream_set_blocking($closesession, true);
-							//tream_get_contents($closesession);
+		//	if ($ups==''){
+			//					$ups_cmd="upsc -l";
+			//					$ups_output = ssh2_exec($connection, $ups_cmd); 
+				//		stream_set_blocking($ups_output, true);
+				//		$ups = stream_get_contents($ups_output);
+				//		fclose($ups_output);
+						
+								
+								
+							
 			//}
 		
 				
@@ -422,12 +439,12 @@ class Nut_free extends eqLogic {
 						$batt_chargeoutput = ssh2_exec($connection, $batt_chargecmd); 
 						stream_set_blocking($batt_chargeoutput, true);
 						$batt_charge = stream_get_contents($batt_chargeoutput);
-						fclose($batt_chargeoutput);
+						fclose($batt_voltoutput);
 						
 						$batt_voltoutput = ssh2_exec($connection, $batt_voltcmd); 
 						stream_set_blocking($batt_voltoutput, true);
 						$batt_volt = stream_get_contents($batt_voltoutput);
-						fclose($batt_voltoutput);
+						fclose($batt_chargeoutput);
 										
 						$ups_loadoutput = ssh2_exec($connection, $ups_loadcmd); 
 						stream_set_blocking($ups_loadoutput, true);
@@ -478,6 +495,7 @@ class Nut_free extends eqLogic {
 					'batt_volt' => $batt_volt,
 					'ups_load' => $ups_load,
 					'batt_runtime' => $batt_runtime,
+					'ssh_op' => $ssh_op,
 					'cnx_ssh' => $cnx_ssh,
 				);
 					
@@ -522,7 +540,10 @@ class Nut_free extends eqLogic {
 					$batt_runtime->event($dataresult['batt_runtime']);
 				}
 					
-					
+				$ssh_op = $this->getCmd(null,'ssh_op');
+					if(is_object($ssh_op)){
+						$ssh_op->event($dataresult['ssh_op']);
+					}	
 				$cnx_ssh = $this->getCmd(null,'cnx_ssh');
 					if(is_object($cnx_ssh)){
 						$cnx_ssh->event($dataresult['cnx_ssh']);

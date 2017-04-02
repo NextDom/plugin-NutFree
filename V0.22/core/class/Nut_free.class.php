@@ -75,6 +75,20 @@ class Nut_free extends eqLogic {
 			$Nut_freeCmd->setSubType('string');
 			$Nut_freeCmd->setEqLogic_id($this->getId());
 			$Nut_freeCmd->save();
+			
+		$Nut_freeCmd = $this->getCmd(null, 'ups_line');
+		if (!is_object($Nut_freeCmd)) {
+			$Nut_freeCmd = new Nut_freeCmd();
+			$Nut_freeCmd->setLogicalId('ups_line');
+			$Nut_freeCmd->setIsVisible(1);
+			$Nut_freeCmd->setName(__('UPS MODE', __FILE__));
+			$Nut_freeCmd->setOrder(1);
+			$Nut_freeCmd->setTemplate('dashboard', 'line');
+		}
+			$Nut_freeCmd->setType('info');
+			$Nut_freeCmd->setSubType('string');
+			$Nut_freeCmd->setEqLogic_id($this->getId());
+			$Nut_freeCmd->save();
 		
 	
 		$Nut_freeCmd = $this->getCmd(null, 'input_volt');
@@ -222,6 +236,11 @@ class Nut_free extends eqLogic {
 		$replace['#Model#'] = (is_object($Model)) ? $Model->execCmd() : '';
 		$replace['#Modelid#'] = is_object($Model) ? $Model->getId() : '';
 		$replace['#Model_display#'] = (is_object($Model) && $Model->getIsVisible()) ? "#Model_display#" : "none";
+		
+		$ups_line = $this->getCmd(null,'ups_line');
+		$replace['#ups_line#'] = (is_object($ups_line)) ? $ups_line->execCmd() : '';
+		$replace['#ups_lineid#'] = is_object($ups_line) ? $ups_line->getId() : '';
+		$replace['#ups_line_display#'] = (is_object($ups_line) && $ups_line->getIsVisible()) ? "#ups_line_display#" : "none";
 
 		$input_volt = $this->getCmd(null,'input_volt');
 		$replace['#input_volt#'] = (is_object($input_volt)) ? $input_volt->execCmd() : '';
@@ -304,6 +323,7 @@ class Nut_free extends eqLogic {
 				$cnx_ssh = 'OK';
 				$Marque_infocmd = "upsc ".$ups."@".$ip." device.mfr  > /dev/stdout 2> /dev/null";
 				$Modelcmd = "upsc ".$ups."@".$ip." device.model  > /dev/stdout 2> /dev/null";
+				$ups_linecmd = "upsc ".$ups."@".$ip." ups.status  > /dev/stdout 2> /dev/null";
 				$input_voltcmd = "upsc ".$ups."@".$ip." input.voltage  > /dev/stdout 2> /dev/null";
 				$input_freqcmd = "upsc ".$ups."@".$ip." input.frequency  > /dev/stdout 2> /dev/null";
 				$output_voltcmd = "upsc ".$ups."@".$ip." output.voltage  > /dev/stdout 2> /dev/null";
@@ -321,6 +341,7 @@ class Nut_free extends eqLogic {
 					
 					$Marque_info = exec($Marque_infocmd);
 					$Model = exec( $Modelcmd); 
+					$ups_line = exec ( $ups_linecmd);
 					$input_volt = exec($input_voltcmd);
 					$input_freq = exec($input_freqcmd);
 					$output_volt = exec($output_voltcmd);
@@ -369,6 +390,7 @@ class Nut_free extends eqLogic {
 						/* Listing des commandes*/
 						$Marque_infocmd = "upsc ".$ups." device.mfr";
 						$Modelcmd = "upsc ".$ups." device.model";
+						$ups_linecmd = "upsc ".$ups." ups.status";
 						$input_voltcmd = "upsc ".$ups." input.voltage";
 						$input_freqcmd = "upsc ".$ups." input.frequency";
 						$output_voltcmd = "upsc ".$ups." output.voltage";
@@ -392,7 +414,12 @@ class Nut_free extends eqLogic {
 						$Modeloutput = ssh2_exec($connection, $Modelcmd); 
 						stream_set_blocking($Modeloutput, true);
 						$Model = stream_get_contents($Modeloutput);	
-						fclose($Modeloutput);	
+						fclose($Modeloutput);
+
+						$ups_lineoutput = ssh2_exec($connection, $ups_linecmd); 
+						stream_set_blocking($ups_lineoutput, true);
+						$ups_line = stream_get_contents($ups_lineoutput);	
+						fclose($ups_lineoutput);						
 						
 						$input_voltoutput = ssh2_exec($connection, $input_voltcmd); 
 						stream_set_blocking($input_voltoutput, true);
@@ -469,6 +496,7 @@ class Nut_free extends eqLogic {
 
 				$dataresult = array(
 					'Model' => $Model,
+					'ups_line' => $ups_line,
 					'input_volt' => $input_volt,
 					'input_freq' => $input_freq,
 					'output_volt' => $output_volt,
@@ -484,6 +512,10 @@ class Nut_free extends eqLogic {
 				$Model = $this->getCmd(null,'Model');
 					if(is_object($Model)){
 						$Model->event($dataresult['Model']);
+					}
+				$ups_line = $this->getCmd(null,'ups_line');
+					if(is_object($ups_line)){
+						$ups_line->event($dataresult['ups_line']);
 					}
 				$input_volt = $this->getCmd(null,'input_volt');
 					if(is_object($input_volt)){

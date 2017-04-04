@@ -415,7 +415,7 @@ class Nut_free extends eqLogic {
 						$batt_voltcmd = "upsc ".$ups." battery.voltage";
 						$ups_loadcmd = "upsc ".$ups." ups.load";
 						$batt_runtimecmd = "upsc ".$ups." battery.runtime";
-						
+						$timer_shutdowncmd = "upsc".$ups." ups.timer.shutdown";
 									
 						/* Action*/
 						

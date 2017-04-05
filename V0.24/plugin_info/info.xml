@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<info>
+    <id>Nut_free</id>
+    <name>Nut_free</name>
+    <description>Plugin de UPS free</description>
+    <icon>fa fa-search</icon>
+    <licence>AGPL</licence>
+    <author>SFY</author>
+    <installation>Aucune</installation>
+    <require>1.10</require>
+    <version>0.24</version>
+    <category>monitoring</category>
+    <hasDependency>1</hasDependency>
+</info>

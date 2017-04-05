@@ -6,12 +6,12 @@
 		<script>
 			if ('#cnx_ssh#' == 'OK') {
 				if ('#ssh_op#' == '1'){
-				$('#iconSSH#id#').append('<i title="Connexion SSH OK" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+				$('#iconSSH#id#').append('<i title="Connexion SSH OK" class="techno techno-tv tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
 			} 
 			} 
 			if ('#cnx_ssh#' == 'OK'){
 			if (('#ssh_op#' == '0')||('#ssh_op#' == '')){
-				$('#iconSSH#id#').append('<i title="Sans connexion SSH" class="fa fa-check tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+				$('#iconSSH#id#').append('<i title="Sans connexion SSH" class="fa fa-sitemap tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
 			} 
 			}
 			if ('#cnx_ssh#' == 'KO') {
@@ -20,11 +20,11 @@
 		
 			if (('#ups_line#' == 'OL CHRG')||('#ups_line#' == 'OL')) {
 				
-				$('#iconUPS_line#id#').append('<i title="En ligne" class="fa fa-bolt tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
+				$('#iconUPS_line#id#').append('<i title="En ligne" class="techno techno-plug2 tooltips" style="font-size : 1.1em;color: #00FF00;" ></i>');
 			} 
 			else if ('#ups_line#' == 'OB DISCHRG') {
 				
-				$('#iconUPS_line#id#').append('<i title="Hors ligne" class="fa fa-bolt tooltips" style="font-size : 1.1em;color: #FEB95E;" ></i>');
+				$('#iconUPS_line#id#').append('<i title="Hors ligne" class="techno techno-low2 tooltips" style="font-size : 1.1em;color: #FEB95E;" ></i>');
 			} 
 			
 			else {
@@ -88,7 +88,7 @@
     </script>
 	
 	<div class="tooltips"  data-cmd_id="#output_powerid#" style="margin-left:5px;display: #output_power_display#;">
-			<span title="Puissance de sortie (output_freq)" style="width:15px;">Puissance de sortie: </span>
+			<span title="Puissance de sortie (output_power)" style="width:15px;">Puissance de sortie: </span>
 			<span id="output_power#id#"></span><span> W</span>
 	</div>
 	<script>

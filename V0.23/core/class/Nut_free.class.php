@@ -19,6 +19,22 @@
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
+
+/*init variables*/
+$Marque_infocmd = "50";
+$Modelcmd = "05";
+$ups_linecmd = "50";
+$input_voltcmd = "50";
+$input_freqcmd = "50";
+$output_voltcmd = "50";
+$output_freqcmd = "50";
+$output_powercmd = "50";
+$batt_chargecmd = "50";
+$batt_voltcmd = "50";
+$ups_loadcmd = "50";
+$batt_runtimecmd = "50";
+$timer_shutdowncmd = "50";
+						
 class Nut_free extends eqLogic {
 
     public static function cron() {
@@ -208,7 +224,7 @@ class Nut_free extends eqLogic {
 			$Nut_freeCmd->setName(__('SSH OPTION', __FILE__));
 			$Nut_freeCmd->setEqLogic_id($this->getId());
 			$Nut_freeCmd->setLogicalId('ssh_op');
-			 $Nut_freeCmd->setConfiguration('data', 'ssh_op');
+			$Nut_freeCmd->setConfiguration('data', 'ssh_op');
 			$Nut_freeCmd->setType('info');
 			$Nut_freeCmd->setSubType('numeric');
 			$Nut_freeCmd->save();
@@ -420,23 +436,24 @@ class Nut_free extends eqLogic {
 						//	fclose($ups_output);
 						//}
 						//	else {
-								$ups_ssh=$ups;
+							//	$ups_ssh=$ups;
 					//	}
 											
 						/* Listing des commandes*/
-						$Marque_infocmd = "upsc ".$ups_ssh." device.mfr";
-						$Modelcmd = "upsc ".$ups_ssh." device.model";
-						$ups_linecmd = "upsc ".$ups_ssh." ups.status";
-						$input_voltcmd = "upsc ".$ups_ssh." input.voltage";
-						$input_freqcmd = "upsc ".$ups_ssh." input.frequency";
-						$output_voltcmd = "upsc ".$ups_ssh." output.voltage";
-						$output_freqcmd = "upsc ".$ups_ssh." output.frequency";
-						$output_powercmd = "upsc ".$ups_ssh." ups.power";
-						$batt_chargecmd = "upsc ".$ups_ssh." battery.charge";
-						$batt_voltcmd = "upsc ".$ups_ssh." battery.voltage";
-						$ups_loadcmd = "upsc ".$ups_ssh." ups.load";
-						$batt_runtimecmd = "upsc ".$ups_ssh." battery.runtime";
-						$timer_shutdowncmd = "upsc ".$ups_ssh." ups.timer.shutdown";
+						$Marque_infocmd = "upsc ".$ups." device.mfr";
+						$Modelcmd = "upsc ".$ups." device.model";
+						$ups_linecmd = "upsc ".$ups." ups.status";
+						$input_voltcmd = "upsc ".$ups." input.voltage";
+						$input_freqcmd = "upsc ".$ups." input.frequency";
+						$output_voltcmd = "upsc ".$ups." output.voltage";
+						$output_freqcmd = "upsc ".$ups." output.frequency";
+						$output_powercmd = "upsc ".$ups." ups.power";
+						$batt_chargecmd = "upsc ".$ups." battery.charge";
+						$batt_voltcmd = "upsc ".$ups." battery.voltage";
+						$ups_loadcmd = "upsc ".$ups." ups.load";
+						$batt_runtimecmd = "upsc ".$ups." battery.runtime";
+						$timer_shutdowncmd = "upsc ".$ups." ups.timer.shutdown";
+						
 									
 						/* Action*/
 						
@@ -507,6 +524,7 @@ class Nut_free extends eqLogic {
 						$timer_shutdown = stream_get_contents($timer_shutdownoutput);
 						fclose($timer_shutdownoutput);
 						
+						
 						$connection = ssh2_connect($ip,$port);
 						ssh2_auth_password($connection,$user,$pass);
 						
@@ -519,7 +537,7 @@ class Nut_free extends eqLogic {
 
 												
 						$Model= $Marque_info." ".$Model;
-						//$Model= $ups;
+						//$Model= $timer_shutdown;
 						
 						
 					}

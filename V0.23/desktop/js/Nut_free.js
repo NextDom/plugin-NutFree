@@ -30,10 +30,10 @@ function addCmdToTable(_cmd) {
 	tr += '<td>';
 	tr += '</td>';
 	tr += '<td style="width: 150px;">';
-	if (_cmd.logicalId == 'Model' || _cmd.logicalId == 'ups_line' ||_cmd.logicalId == 'input_volt' || _cmd.logicalId == 'input_freq'|| _cmd.logicalId == 'output_volt' || _cmd.logicalId == 'output_freq'||_cmd.logicalId == 'output_power'||_cmd.logicalId == 'batt_charge'||_cmd.logicalId == 'batt_volt'||_cmd.logicalId == 'ups_load'||_cmd.logicalId == 'batt_runtime') {
+	if (_cmd.logicalId == 'Model' || _cmd.logicalId == 'ups_line' ||_cmd.logicalId == 'input_volt' || _cmd.logicalId == 'input_freq'|| _cmd.logicalId == 'output_volt' || _cmd.logicalId == 'output_freq'||_cmd.logicalId == 'output_power'||_cmd.logicalId == 'batt_charge'||_cmd.logicalId == 'batt_volt'||_cmd.logicalId == 'ups_load'||_cmd.logicalId == 'batt_runtime'||_cmd.logicalId == 'timer_shutdown') {
 		tr += '<span><input type="checkbox" class="cmdAttr" data-size="mini" data-l1key="isVisible" checked/> {{Afficher}}<br/></span>';
 	}
-	if (_cmd.logicalId == 'ups_line' ||_cmd.logicalId == 'input_volt' ||_cmd.logicalId == 'input_freq'||_cmd.logicalId == 'output_volt' ||_cmd.logicalId == 'output_freq'||_cmd.logicalId == 'output_power'||_cmd.logicalId == 'batt_charge'||_cmd.logicalId == 'batt_volt'||_cmd.logicalId == 'ups_load'||_cmd.logicalId == 'batt_runtime') {
+	if (_cmd.logicalId == 'input_volt' ||_cmd.logicalId == 'input_freq'||_cmd.logicalId == 'output_volt' ||_cmd.logicalId == 'output_freq'||_cmd.logicalId == 'output_power'||_cmd.logicalId == 'batt_charge'||_cmd.logicalId == 'batt_volt'||_cmd.logicalId == 'ups_load'||_cmd.logicalId == 'batt_runtime'||_cmd.logicalId == 'timer_shutdown') {
 		tr += '<span><input type="checkbox" class="cmdAttr" data-l1key="isHistorized"/> {{Historiser}}</span>';
 	}
 	tr += '</td>';

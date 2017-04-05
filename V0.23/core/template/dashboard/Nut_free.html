@@ -132,6 +132,15 @@
 			$('#batt_runtime#id#').append('<span data-cmd_id="#batt_runtimeid#" class="history cursor">#batt_runtime#</span>');
 		}
     </script>
+	<div class="tooltips"  data-cmd_id="#timer_shutdownid#" style="margin-left:5px;display: #timer_shutdown_display#;">
+			<span title="Temps restant avant arrêt (timer_shutdown)" style="width:15px;">Temps restant avant arrêt: </span>
+			<span id="timer_shutdown#id#"></span><span> s</span>
+	</div>
+	<script>
+		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
+			$('#timer_shutdown#id#').append('<span data-cmd_id="#timer_shutdownid#" class="history cursor">#timer_shutdown#</span>');
+		}
+    </script>
 </div>
 
 

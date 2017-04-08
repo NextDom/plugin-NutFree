@@ -20,20 +20,6 @@
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 
-/*init variables*/
-$Marque_infocmd = "50";
-$Modelcmd = "05";
-$ups_linecmd = "50";
-$input_voltcmd = "50";
-$input_freqcmd = "50";
-$output_voltcmd = "50";
-$output_freqcmd = "50";
-$output_powercmd = "50";
-$batt_chargecmd = "50";
-$batt_voltcmd = "50";
-$ups_loadcmd = "50";
-$batt_runtimecmd = "50";
-$timer_shutdowncmd = "50";
 						
 class Nut_free extends eqLogic {
 
@@ -348,8 +334,7 @@ class Nut_free extends eqLogic {
 	}
 
    public function getInformations() {
-		/*DEBUG général*/
-		log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
+		
 		
 		if ($this->getIsEnable()){
 			$ip = $this->getConfiguration('addressip');
@@ -369,12 +354,13 @@ class Nut_free extends eqLogic {
 				$ups = exec ($upscmd);
 			}
 			
-			if(!$ups){
+			if($ups==""){
 				log::add('Nut_free', 'error', $equipement.' UPS Not determined ');
+				log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip. "2>&1 | grep -v '^Init SSL'"	));
 			}	
 			
 			/*DEBUG non ssh*/
-			log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip));
+			
 		
 				$cnx_ssh = 'OK';
 				$Marque_infocmd = "upsc ".$ups."@".$ip." device.mfr  > /dev/stdout 2> /dev/null";
@@ -417,9 +403,7 @@ class Nut_free extends eqLogic {
 			//			AVEC Connexion SSH   	  //
 			////////////////////////////////////////
 			if ($ssh_op == '1'){
-			
-			/*DEBUG ssh*/
-			//log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip));			
+						
 				
 			$user = $this->getConfiguration('user');
 			$pass = $this->getConfiguration('password');
@@ -557,7 +541,8 @@ class Nut_free extends eqLogic {
 				}
 			}
 			
-		
+		/*DEBUG général*/
+		log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
 		
 		
 		

@@ -348,8 +348,9 @@ class Nut_free extends eqLogic {
 	}
 
    public function getInformations() {
-
-	
+		/*DEBUG général*/
+		log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
+		
 		if ($this->getIsEnable()){
 			$ip = $this->getConfiguration('addressip');
 			$ups = $this->getConfiguration('UPS');
@@ -367,6 +368,14 @@ class Nut_free extends eqLogic {
 				$upscmd="upsc -l ".$ip."  > /dev/stdout 2> /dev/null";
 				$ups = exec ($upscmd);
 			}
+			
+			if(!$ups){
+				log::add('Nut_free', 'error', $equipement.' UPS Not determined ');
+			}	
+			
+			/*DEBUG non ssh*/
+			log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip));
+		
 				$cnx_ssh = 'OK';
 				$Marque_infocmd = "upsc ".$ups."@".$ip." device.mfr  > /dev/stdout 2> /dev/null";
 				$Modelcmd = "upsc ".$ups."@".$ip." device.model  > /dev/stdout 2> /dev/null";
@@ -408,6 +417,10 @@ class Nut_free extends eqLogic {
 			//			AVEC Connexion SSH   	  //
 			////////////////////////////////////////
 			if ($ssh_op == '1'){
+			
+			/*DEBUG ssh*/
+			//log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip));			
+				
 			$user = $this->getConfiguration('user');
 			$pass = $this->getConfiguration('password');
 			$port = $this->getConfiguration('portssh');
@@ -544,7 +557,10 @@ class Nut_free extends eqLogic {
 				}
 			}
 			
-			
+		
+		
+		
+		
 		
 		if (isset($cnx_ssh)) {
 			
@@ -646,6 +662,9 @@ class Nut_free extends eqLogic {
 					}
 			}
 		}
+		
+		
+		
 	}
 	
 	function getCaseAction($paramaction) {

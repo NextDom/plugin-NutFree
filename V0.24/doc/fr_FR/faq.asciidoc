@@ -8,4 +8,5 @@ Le plugin actualise les informations toutes les minutes.
 Seulement si il y a plusieurs onduleurs sur le serveur NUT.
 --
 - Certaines infos ne remontent pas!
+--
 Soit l'onduleur en gére pas les infos, soit elles sont toujour à 0.

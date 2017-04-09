@@ -1,2 +1,4 @@
 [horizontal]
-0.0:: versions de tests
+====0.24::
+ Ajout du mode debug
+ Modification des textes

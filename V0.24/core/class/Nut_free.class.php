@@ -20,6 +20,7 @@
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 
+
 						
 class Nut_free extends eqLogic {
 
@@ -340,24 +341,26 @@ class Nut_free extends eqLogic {
 			$ip = $this->getConfiguration('addressip');
 			$ups = $this->getConfiguration('UPS');
 			$ssh_op = $this->getConfiguration('SSH_select');
-			$equipement = $this->getName();			
+			$equipement = $this->getName();
+			$ups_debug = $this->getConfiguration('UPS');		
 		}
 		
 		////////////////////////////////////////
 		//			SANS Connexion SSH   	  //
 		////////////////////////////////////////
 		
+		
+		
 		if ($ssh_op == '0'){
+			$upscmd="upsc -l ".$ip."  > /dev/stdout 2> /dev/null";
+			$ups_auto=exec ($upscmd);
 			
 			if (($ups=='')&&($ssh_op == '0')){
-				$upscmd="upsc -l ".$ip."  > /dev/stdout 2> /dev/null";
-				$ups = exec ($upscmd);
+				
+				$ups = $ups_auto;
 			}
 			
-			if($ups==""){
-				log::add('Nut_free', 'error', $equipement.' UPS Not determined ');
-				log::add('Nut_free', 'debug', $equipement.' UPS mode: '. exec("upsc -l ".$ip. "2>&1 | grep -v '^Init SSL'"	));
-			}	
+				
 			
 			/*DEBUG non ssh*/
 			
@@ -540,10 +543,16 @@ class Nut_free extends eqLogic {
 					}
 				}
 			}
-			
-		/*DEBUG général*/
-		log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
 		
+		if ($this->getIsEnable()){		
+				/*DEBUG général*/
+				if($ups_line==""){
+						log::add('Nut_free', 'error', $equipement.' UPS Not determined ');
+						log::add('Nut_free', 'debug', $equipement.' UPS configured: ' . $ups_debug );
+						log::add('Nut_free', 'debug', $equipement.' UPS auto detect: '. $ups_auto);
+					}
+				log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
+		}	
 		
 		
 		

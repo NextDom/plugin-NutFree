@@ -122,9 +122,9 @@ $eqLogics = eqLogic::byType('Nut_free');
 				   </div>
 					
 					<div class="form-group">
-					  <label class="col-md-2 control-label">{{UPS}}</label>   
+					  <label class="col-md-2 control-label">{{Nom de la configuration UPS}}</label>   
 					  <div class="col-md-3">
-						 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="UPS" type="text" placeholder="{{saisir le nom UPS}}">
+						 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="UPS" type="text" placeholder="{{saisir le nom de l'UPS du serveur. &quot;Resultat de UPSC -L&quot; sur le serveur UPS }}">
 					  </div>
 				   </div> 
 					

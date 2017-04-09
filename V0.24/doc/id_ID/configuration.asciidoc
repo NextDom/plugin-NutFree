@@ -26,23 +26,17 @@ Nom de la configuration UPS:: Nom de l'onduleur a surveill√© vu par NUT ( R√©sul
 							  Le plugin trouvera seul le nom.
 							 - Si il y a plusieurs onduleur, il faudra connaitre le nom et le renseigner.
 							 
-<<<<<<< HEAD
 Auto detectetion de l'UPS:
 
 image::../images/Nut_free_3_2.png
 
 Si il y a seulement 1 onduleur sur le serveur Nut, laisser sur oui.
-sinon mettre sur non et renseigner l'onduleur ‡ surveiller.
+sinon mettre sur non et renseigner l'onduleur √† surveiller.
 
 image::../images/Nut_free_3_3.png
 
 le type de connexion au serveur NUT:
 
-=======
-S√©lectionnez
- le type de connexion au serveur NUT
- 
->>>>>>> origin/master
 image::../images/Nut_free_4.png[align="center"]
  
 [horizontal]
@@ -54,13 +48,8 @@ Dialogue direct avec le serveur nut via l'IP et le port de communincation standa
 Vous devez choisir un identifiant avec les droits n√©cessaires pour lancer les commandes (en g√©n√©ral le login "root").
 Pour un NAS Synology:
 - il faut utiliser le login "root" et le mot de passe de votre compte "admin"
-<<<<<<< HEAD
-- il faut autoriser l'IP du jeedom ‡ recuperer les info de l'onduleur. 
-Aller dans le "Panneau de configuration" => "MatÈriel et alimentation" => "UPS" => "PÈriphÈriques DiskStation autorisÈs"
-=======
 - il faut autoriser l'IP du jeedom √† recuperer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Mat√©riel et alimentation" => "UPS" => "P√©riph√©riques DiskStation autoris√©s"
->>>>>>> origin/master
 
 image::../images/Nut_free_6.png[align="center"]
 
@@ -81,13 +70,8 @@ image::../images/Nut_free_5.png[align="center"]
 Vous devez choisir un identifiant avec les droits n√©cessaires pour lancer les commandes (en g√©n√©ral le login "root").
 Pour un NAS Synology:
 - il faut utiliser le login "root" et le mot de passe de votre compte "admin"
-<<<<<<< HEAD
-- il faut autoriser l'IP du jeedom ‡ recuperer les info de l'onduleur. 
-Aller dans le "Panneau de configuration" => "MatÈriel et alimentation" => "UPS" => "PÈriphÈriques DiskStation autorisÈs"
-=======
 - il faut autoriser l'IP du jeedom √† recuperer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Mat√©riel et alimentation" => "UPS" => "P√©riph√©riques DiskStation autoris√©s"
->>>>>>> origin/master
 
 image::../images/Nut_free_6.png[align="center"]
 
@@ -97,8 +81,4 @@ Pour certaines valeurs, il est possible d'activer "historiser" pour repr√©senter
 
 === Quelques captures
 
-<<<<<<< HEAD
 image::../images/Nut_free_7.png[align="center"]
-=======
-image::../images/Nut_free_7.png[align="center"]
->>>>>>> origin/master

@@ -28,6 +28,7 @@ Nom de la configuration UPS:: Nom de l'onduleur a surveillé vu par NUT ( Résul
 							 
 Sélectionnez
  le type de connexion au serveur NUT
+ 
  image::../images/Nut_free_4.png[align="center"]
  
 [horizontal]
@@ -71,4 +72,5 @@ image::../images/Nut_free_6.png[align="center"]
 Pour certaines valeurs, il est possible d'activer "historiser" pour représenter, par une courbe, les variations de différentes valeurs.
 
 === Quelques captures
+
 image::../images/Nut_free_7.png[align="center"]

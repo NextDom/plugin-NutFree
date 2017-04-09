@@ -339,18 +339,17 @@ class Nut_free extends eqLogic {
 		
 		if ($this->getIsEnable()){
 			$ip = $this->getConfiguration('addressip');
+			$UPS_auto_select = $this->getConfiguration('UPS_auto_select');
 			$ups = $this->getConfiguration('UPS');
 			$ssh_op = $this->getConfiguration('SSH_select');
 			$equipement = $this->getName();
 			$ups_debug = $this->getConfiguration('UPS');		
 		}
 		
+		
 		////////////////////////////////////////
 		//			SANS Connexion SSH   	  //
 		////////////////////////////////////////
-		
-		
-		
 		if ($ssh_op == '0'){
 			$upscmd="upsc -l ".$ip."  > /dev/stdout 2> /dev/null";
 			$ups_auto=exec ($upscmd);
@@ -360,11 +359,6 @@ class Nut_free extends eqLogic {
 				$ups = $ups_auto;
 			}
 			
-				
-			
-			/*DEBUG non ssh*/
-			
-		
 				$cnx_ssh = 'OK';
 				$Marque_infocmd = "upsc ".$ups."@".$ip." device.mfr  > /dev/stdout 2> /dev/null";
 				$Modelcmd = "upsc ".$ups."@".$ip." device.model  > /dev/stdout 2> /dev/null";
@@ -412,8 +406,6 @@ class Nut_free extends eqLogic {
 			$pass = $this->getConfiguration('password');
 			$port = $this->getConfiguration('portssh');
 			
-			
-		
 				
 				if (!$connection = ssh2_connect($ip,$port)){
 					log::add('Nut_free', 'error', 'connexion SSH KO pour '.$equipement);
@@ -424,20 +416,21 @@ class Nut_free extends eqLogic {
 					$cnx_ssh = 'KO';
 					}else{
 						
+						$upscmd = "upsc -l";
+
+						$ups_output = ssh2_exec($connection, $upscmd); 
+						stream_set_blocking($ups_output, true);
+						$ups_auto = stream_get_contents($ups_output);
+						fclose($ups_output); 
+						$ups_auto = substr($ups_auto, 0, -1);
 						
+						if ($ups==''){
+							$ups = $ups_auto;
+						}
 												
 						$cnx_ssh = 'OK';
 						
-						//if ($ups==''){
-					//		$upscmd="upsc -l";
-						//	$ups_output = ssh2_exec($connection, $upscmd); 
-						//	stream_set_blocking($ups_output, true);
-						//	$ups_ssh = stream_get_contents($ups_output);
-						//	fclose($ups_output);
-						//}
-						//	else {
-							//	$ups_ssh=$ups;
-					//	}
+						
 											
 						/* Listing des commandes*/
 						$Marque_infocmd = "upsc ".$ups." device.mfr";
@@ -457,8 +450,6 @@ class Nut_free extends eqLogic {
 									
 						/* Action*/
 						
-						
-						
 						$Marque_infooutput = ssh2_exec($connection, $Marque_infocmd); 
 						stream_set_blocking($Marque_infooutput, true);
 						$Marque_info = stream_get_contents($Marque_infooutput);
@@ -467,22 +458,22 @@ class Nut_free extends eqLogic {
 						$Modeloutput = ssh2_exec($connection, $Modelcmd); 
 						stream_set_blocking($Modeloutput, true);
 						$Model = stream_get_contents($Modeloutput);	
-						fclose($Modeloutput);	
+						fclose($Modeloutput);
 						
 						$ups_lineoutput = ssh2_exec($connection, $ups_linecmd); 
 						stream_set_blocking($ups_lineoutput, true);
 						$ups_line = stream_get_contents($ups_lineoutput);
-						fclose($ups_lineoutput);	
-						
+						fclose($ups_lineoutput);
+							
 						$input_voltoutput = ssh2_exec($connection, $input_voltcmd); 
 						stream_set_blocking($input_voltoutput, true);
 						$input_volt = stream_get_contents($input_voltoutput);
-						fclose($input_voltoutput);	
-						
+						fclose($input_voltoutput);
+	
 						$input_freqoutput = ssh2_exec($connection, $input_freqcmd); 
 						stream_set_blocking($input_freqoutput, true);
 						$input_freq = stream_get_contents($input_freqoutput);
-						fclose($input_freqoutput);						
+						fclose($input_freqoutput);
 						
 						$output_voltoutput = ssh2_exec($connection, $output_voltcmd); 
 						stream_set_blocking($output_voltoutput, true);
@@ -493,21 +484,21 @@ class Nut_free extends eqLogic {
 						stream_set_blocking($output_freqoutput, true);
 						$output_freq = stream_get_contents($output_freqoutput);
 						fclose($output_freqoutput);
-						
+							
 						$output_poweroutput = ssh2_exec($connection, $output_powercmd); 
 						stream_set_blocking($output_poweroutput, true);
 						$output_power = stream_get_contents($output_poweroutput);
 						fclose($output_poweroutput);
-						
+							
 						$batt_chargeoutput = ssh2_exec($connection, $batt_chargecmd); 
 						stream_set_blocking($batt_chargeoutput, true);
 						$batt_charge = stream_get_contents($batt_chargeoutput);
-						fclose($batt_voltoutput);
+						fclose($batt_chargeoutput);	
 						
 						$batt_voltoutput = ssh2_exec($connection, $batt_voltcmd); 
 						stream_set_blocking($batt_voltoutput, true);
 						$batt_volt = stream_get_contents($batt_voltoutput);
-						fclose($batt_chargeoutput);
+						fclose($batt_voltoutput);
 										
 						$ups_loadoutput = ssh2_exec($connection, $ups_loadcmd); 
 						stream_set_blocking($ups_loadoutput, true);
@@ -524,17 +515,13 @@ class Nut_free extends eqLogic {
 						$timer_shutdown = stream_get_contents($timer_shutdownoutput);
 						fclose($timer_shutdownoutput);
 						
-						
 						$connection = ssh2_connect($ip,$port);
 						ssh2_auth_password($connection,$user,$pass);
-						
-														
+
 						$closesession = ssh2_exec($connection, 'exit'); 
 						stream_set_blocking($closesession, true);
 						stream_get_contents($closesession);
 						//close ssh ($connection);
-						
-
 												
 						$Model= $Marque_info." ".$Model;
 						//$Model= $timer_shutdown;
@@ -544,25 +531,20 @@ class Nut_free extends eqLogic {
 				}
 			}
 		
+		/*DEBUG général*/
 		if ($this->getIsEnable()){		
-				/*DEBUG général*/
-				if($ups_line==""){
-						log::add('Nut_free', 'error', $equipement.' UPS Not determined ');
-						log::add('Nut_free', 'debug', $equipement.' UPS configured: ' . $ups_debug );
-						log::add('Nut_free', 'debug', $equipement.' UPS auto detect: '. $ups_auto);
-					}
-				log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
+			log::add('Nut_free', 'debug',' -----------------------------------------------------' );
+			log::add('Nut_free', 'debug', $equipement.' UPS auto select: ' . $UPS_auto_select );
+			log::add('Nut_free', 'debug', $equipement.' UPS configured: ' . $ups_debug );
+			log::add('Nut_free', 'debug', $equipement.' UPS auto detect: '. $ups_auto);
+			log::add('Nut_free', 'debug', $equipement.' UPS commande pour auto_detect: '. $upscmd);
+			log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
 		}	
-		
-		
-		
-		if (isset($cnx_ssh)) {
-			
 				
+		if (isset($cnx_ssh)) {
 
 				if (empty($cnx_ssh)) {$cnx_ssh = '';}
 							
-
 				$dataresult = array(
 					'Model' => $Model,
 					'ups_line' => $ups_line,
@@ -665,6 +647,7 @@ class Nut_free extends eqLogic {
 		
 
 			$ip = $this->getConfiguration('addressip');
+			$UPS_auto_select= $this->getConfiguration('UPS_auto_select');
 			$user = $this->getConfiguration('user');
 			$pass = $this->getConfiguration('password');
 			$port = $this->getConfiguration('portssh');

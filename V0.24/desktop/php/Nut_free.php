@@ -121,12 +121,26 @@ $eqLogics = eqLogic::byType('Nut_free');
 					  </div>
 				   </div>
 					
+				<div class="form-group">
+				   <label class="col-md-2 control-label">{{Auto detection UPS?}}</label>
+				   <div class="col-md-3">
+					 <select id="UPS_auto_select" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="UPS_auto_select"
+					  onchange="if(this.selectedIndex == 1) document.getElementById('ups_auto').style.display = 'block';
+					  else document.getElementById('ups_auto').style.display = 'none';">
+						 <option value="0">{{Oui}}</option>
+						 <option value="1">{{Non}}</option>
+					  </select>
+					  
+				   </div>
+				</div>
+				<div id="ups_auto">
 					<div class="form-group">
 					  <label class="col-md-2 control-label">{{Nom de la configuration UPS}}</label>   
 					  <div class="col-md-3">
 						 <input class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="UPS" type="text" placeholder="{{saisir le nom de l'UPS du serveur. &quot;Resultat de UPSC -L&quot; sur le serveur UPS }}">
 					  </div>
 				   </div> 
+				 </div> 
 					
 					<div class="form-group">
 				   <label class="col-md-2 control-label">{{Avec Connexion SSH?}}</label>

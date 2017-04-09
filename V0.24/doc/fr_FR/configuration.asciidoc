@@ -57,7 +57,7 @@ image::../images/Nut_free_6.png[align="center"]
 ====Oui
 Cela signifi avec connexion ssh. Dans ce ca renseigner:
 
-Après avoir sélectionné ce mode, 4 champs supplémentaires s'affichent :
+Après avoir sélectionné ce mode, 3 champs supplémentaires s'affichent :
 [horizontal]
 Port SSH:: saisir le numéro du port SSH (par défaut il s'agit du port 22)
 Identifiant:: saisir le nom d'utilisateur qui sera utilisé pour lancer les commandes Linux

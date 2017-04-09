@@ -1,2 +1,0 @@
-[horizontal]
-0.x:: versions de tests

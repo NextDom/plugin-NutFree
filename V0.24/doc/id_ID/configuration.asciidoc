@@ -28,12 +28,12 @@ Nom de la configuration UPS:: Nom de l'onduleur a surveillé vu par NUT ( Résul
 							 
 Auto detectetion de l'UPS:
 
-image::../images/Nut_free_3_2.png
+image::../images/Nut_free_3_2.png[align="center"]
 
 Si il y a seulement 1 onduleur sur le serveur Nut, laisser sur oui.
 sinon mettre sur non et renseigner l'onduleur à surveiller.
 
-image::../images/Nut_free_3_3.png
+image::../images/Nut_free_3_3.png[align="center"]
 
 le type de connexion au serveur NUT:
 

@@ -9,4 +9,4 @@ Seulement si il y a plusieurs onduleurs sur le serveur NUT.
 --
 - Certaines infos ne remontent pas!
 --
-Soit l'onduleur en gére pas les infos, soit elles sont toujour à 0.
+Soit l'onduleur ne gére pas les infos, soit elles sont toujour à 0.

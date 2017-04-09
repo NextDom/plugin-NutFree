@@ -46,8 +46,8 @@ Dialogue direct avec le serveur nut via l'IP et le port de communincation standa
 
 [IMPORTANT]
 Vous devez choisir un identifiant avec les droits nécessaires pour lancer les commandes (en général le login "root").
-Pour un NAS Synology:
 
+Pour un NAS Synology:
 - il faut utiliser le login "root" et le mot de passe de votre compte "admin"
 - il faut autoriser l'IP du jeedom à recuperer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS" => "Périphériques DiskStation autorisés"
@@ -69,8 +69,8 @@ image::../images/Nut_free_5.png[align="center"]
 [horizontal]
 [IMPORTANT]
 Vous devez choisir un identifiant avec les droits nécessaires pour lancer les commandes (en général le login "root").
-Pour un NAS Synology:
 
+Pour un NAS Synology:
 - il faut utiliser le login "root" et le mot de passe de votre compte "admin"
 - il faut autoriser l'IP du jeedom à recuperer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS" => "Périphériques DiskStation autorisés"

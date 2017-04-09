@@ -29,7 +29,7 @@ Nom de la configuration UPS:: Nom de l'onduleur a surveillé vu par NUT ( Résul
 Sélectionnez
  le type de connexion au serveur NUT
  
- image::../images/Nut_free_4.png[align="center"]
+image::../images/Nut_free_4.png[align="center"]
  
 [horizontal]
 ====Non

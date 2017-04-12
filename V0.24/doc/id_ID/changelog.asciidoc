@@ -1,4 +1,4 @@
-[horizontal]
+﻿[horizontal]
 ====0.24::
  Ajout du mode debug
  Modification des textes

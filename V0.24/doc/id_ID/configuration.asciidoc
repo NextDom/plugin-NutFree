@@ -79,7 +79,7 @@ image::../images/Nut_free_6.png[align="center"]
 
 [horizontal]
 === Historiser
-Pour certaines valeurs, il est possible d'activer "historiser" pour représenter, par une courbe, les variations de différentes valeurs.
+Pour certaines valeurs, il est possible d'activer "historiser" pour représenter, par une courbe, les variations de diffé	rentes valeurs.
 
 === Quelques captures
 

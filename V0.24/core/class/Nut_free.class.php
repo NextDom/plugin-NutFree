@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /* This file is part of Jeedom.
  *
@@ -498,8 +498,6 @@ class Nut_free extends eqLogic {
 						$batt_voltoutput = ssh2_exec($connection, $batt_voltcmd); 
 						stream_set_blocking($batt_voltoutput, true);
 						$batt_volt = stream_get_contents($batt_voltoutput);
-						$errorStream = ssh2_fetch_stream($batt_voltoutput, SSH2_STREAM_STDERR);
-						$error_batt_volt=stream_get_contents($errorStream);
 						fclose($batt_voltoutput);
 										
 						$ups_loadoutput = ssh2_exec($connection, $ups_loadcmd); 
@@ -541,7 +539,6 @@ class Nut_free extends eqLogic {
 			log::add('Nut_free', 'debug', $equipement.' UPS auto detect: '. $ups_auto);
 			log::add('Nut_free', 'debug', $equipement.' UPS commande pour auto_detect: '. $upscmd);
 			log::add('Nut_free', 'debug', $equipement.' UPS Connexion type: '. $ssh_op);
-			log::add('Nut_free', 'debug', $equipement.' UPS Tension batterie: '. $error_batt_volt);
 		}	
 				
 		if (isset($cnx_ssh)) {

@@ -1,4 +1,4 @@
-Nous allons maintenant paramétrer un équipement. Pour se faire, cliquer sur *Plugins  / Monitoring / Nut_free*
+﻿Nous allons maintenant paramétrer un équipement. Pour se faire, cliquer sur *Plugins  / Monitoring / Nut_free*
 
 Puis cliquer sur le bouton en haut à gauche *Ajouter*
 
@@ -13,7 +13,7 @@ Puis définir :
 
 - Objet parent
 - Catégorie (optionnelle)
-- Activer (à cocher, sinon l’équipement ne sera pas utilisable)
+- Activer (à cocher, sinon l'équipement ne sera pas utilisable)
 - Visible (optionel si vous ne désirez pas le rendre visible sur le Dashboard)
 
 image::../images/Nut_free_3.png[align="center"]
@@ -49,7 +49,7 @@ Vous devez choisir un identifiant avec les droits nécessaires pour lancer les c
 
 Pour un NAS Synology:
 - il faut utiliser le login "root" et le mot de passe de votre compte "admin"
-- il faut autoriser l'IP du jeedom à recuperer les info de l'onduleur. 
+- il faut autoriser l'IP du jeedom à récupérer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS" => "Périphériques DiskStation autorisés"
 
 image::../images/Nut_free_6.png[align="center"]
@@ -58,7 +58,7 @@ image::../images/Nut_free_6.png[align="center"]
 ====Oui
 Cela signifi avec connexion ssh. Dans ce ca renseigner:
 
-Après avoir sélectionné ce mode, 3 champs supplémentaires s'affichent :
+Aprés avoir sélectionné ce mode, 3 champs supplémentaires s'affichent :
 [horizontal]
 Port SSH:: saisir le numéro du port SSH (par défaut il s'agit du port 22)
 Identifiant:: saisir le nom d'utilisateur qui sera utilisé pour lancer les commandes Linux

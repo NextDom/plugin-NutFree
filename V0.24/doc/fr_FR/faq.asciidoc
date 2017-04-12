@@ -1,12 +1,8 @@
-[panel,primary]
-- Quelle est la fréquence de rafraichissement des informations ?
+﻿[panel,primary]
+.Quelle est la fréquence de rafraichissement des informations ?
 --
-Le plugin actualise les informations toutes les minutes.
+Le plugin actualise les informations toutes les 1min (00, 15, 30 et 45).
 --
-- Faut-il renseigner la ligne "Nom de la configuration UPS"?
+.Faut-il renseigner la ligne "Nom de la configuration UPS"?
 --
 Seulement si il y a plusieurs onduleurs sur le serveur NUT.
---
-- Certaines infos ne remontent pas!
---
-Soit l'onduleur ne gére pas les infos, soit elles sont toujour à 0.

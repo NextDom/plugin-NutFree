@@ -2,12 +2,12 @@
 
 Puis cliquer sur le bouton en haut à gauche *Ajouter*
 
-image::../images/Nut_free_1.png[align="center"]
+image::../images/nut_free_1.png[align="center"]
 
 
 Puis saisir le nom de l'équipement (ex. Onduleur_Nas) 
 
-image::../images/Nut_free_2.png[align="center"]
+image::../images/nut_free_2.png[align="center"]
 
 Puis définir :
 
@@ -16,7 +16,7 @@ Puis définir :
 - Activer (à cocher, sinon l'équipement ne sera pas utilisable)
 - Visible (optionel si vous ne désirez pas le rendre visible sur le Dashboard)
 
-image::../images/Nut_free_3.png[align="center"]
+image::../images/nut_free_3.png[align="center"]
 
 
 
@@ -28,16 +28,16 @@ Nom de la configuration UPS:: Nom de l'onduleur a surveillé vu par NUT ( Résul
 							 
 Auto detectetion de l'UPS:
 
-image::../images/Nut_free_3_2.png[align="center"]
+image::../images/nut_free_3_2.png[align="center"]
 
 Si il y a seulement 1 onduleur sur le serveur Nut, laisser sur oui.
 sinon mettre sur non et renseigner l'onduleur à surveiller.
 
-image::../images/Nut_free_3_3.png[align="center"]
+image::../images/nut_free_3_3.png[align="center"]
 
 le type de connexion au serveur NUT:
 
-image::../images/Nut_free_4.png[align="center"]
+image::../images/nut_free_4.png[align="center"]
  
 [horizontal]
 === Non
@@ -52,7 +52,7 @@ Pour un NAS Synology:
 - il faut autoriser l'IP du jeedom à récupérer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS" => "Périphériques DiskStation autorisés"
 
-image::../images/Nut_free_6.png[align="center"]
+image::../images/nut_free_6.png[align="center"]
 
 [horizontal]
 === Oui
@@ -64,7 +64,7 @@ Port SSH:: saisir le numéro du port SSH (par défaut il s'agit du port 22)
 Identifiant:: saisir le nom d'utilisateur qui sera utilisé pour lancer les commandes Linux
 Mot de passe:: saisir le mot de passe qui est associé au nom d'utilisateur
 
-image::../images/Nut_free_5.png[align="center"]
+image::../images/nut_free_5.png[align="center"]
 
 [horizontal]
 [IMPORTANT]
@@ -75,7 +75,7 @@ Pour un NAS Synology:
 - il faut autoriser l'IP du jeedom à recuperer les info de l'onduleur. 
 Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS" => "Périphériques DiskStation autorisés"
 
-image::../images/Nut_free_6.png[align="center"]
+image::../images/nut_free_6.png[align="center"]
 
 [horizontal]
 === Historiser
@@ -83,4 +83,4 @@ Pour certaines valeurs, il est possible d'activer "historiser" pour représenter
 
 === Quelques captures
 
-image::../images/Nut_free_7.png[align="center"]
+image::../images/nut_free_7.png[align="center"]

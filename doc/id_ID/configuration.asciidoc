@@ -1,13 +1,13 @@
-﻿Nous allons maintenant paramétrer un équipement. Pour se faire, cliquer sur *Plugins  / Monitoring / Nut_free*
+Nous allons maintenant paramétrer un équipement. Pour se faire, cliquer sur *Plugins  / Monitoring / Nut_free*
 
 Puis cliquer sur le bouton en haut à gauche *Ajouter*
 
-image::../images/nut_free_1.png[align="center"]
+image::../images/nut_free_1.png[align="left"]
 
 
 Puis saisir le nom de l'équipement (ex. Onduleur_Nas) 
 
-image::../images/nut_free_2.png[align="center"]
+image::../images/nut_free_2.png[align="left"]
 
 Puis définir :
 
@@ -40,7 +40,7 @@ le type de connexion au serveur NUT:
 image::../images/nut_free_4.png[align="center"]
  
 [horizontal]
-=== Non
+==== Non
 Sans connexion ssh.
 Dialogue direct avec le serveur nut via l'IP et le port de communincation standard de NUT
 
@@ -55,7 +55,7 @@ Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS"
 image::../images/nut_free_6.png[align="center"]
 
 [horizontal]
-=== Oui
+==== Oui
 Cela signifi avec connexion ssh. Dans ce ca renseigner:
 
 Aprés avoir sélectionné ce mode, 3 champs supplémentaires s'affichent :
@@ -78,9 +78,9 @@ Aller dans le "Panneau de configuration" => "Matériel et alimentation" => "UPS"
 image::../images/nut_free_6.png[align="center"]
 
 [horizontal]
-=== Historiser
+==== Historiser
 Pour certaines valeurs, il est possible d'activer "historiser" pour représenter, par une courbe, les variations de différentes valeurs.
 
-=== Quelques captures
+==== Quelques captures
 
 image::../images/nut_free_7.png[align="center"]

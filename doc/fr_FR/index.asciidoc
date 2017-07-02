@@ -1,25 +1,14 @@
-﻿== Nut_free
+== Nut_free
 
-== Présentation
-Ce plugin permet de récupérer des données système et de les afficher sur le Dashboard.
+=== Présentation :
+Ce plugin permet de récupérer des informations des onduleurs et de les afficher sur le Dashboard.
 
-
-== Compatibilité :
-
-== Données visibles sur le Dashboard :
-[horizontal]
-
-'''
-== Configuration
+=== Configuration :
 include::configuration.asciidoc[]
 
-'''
-== FAQ
+=== FAQ : 
 include::faq.asciidoc[]
 
-
-
-'''
-== Changelog
+=== Changelog : 
 include::changelog.asciidoc[]
 

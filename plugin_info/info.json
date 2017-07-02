@@ -1,0 +1,11 @@
+{
+"id" : "Nut_free",
+"name" : "Nut_free",
+"licence" : "AGPL",
+"author" : "SFY",
+"require" : "1.124.0",
+"category" : "monitoring",
+"hasDependency" : true,
+"maxDependancyInstallTime" : 45
+}
+

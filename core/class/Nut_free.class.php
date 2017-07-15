@@ -382,9 +382,9 @@ class Nut_free extends eqLogic {
 					
 					$resultoutput = ssh2_exec($sshconnection, $cmdline); 
 					stream_set_blocking($resultoutput, true);
-					stream_set_blocking($errorStream, true);
 					$result =stream_get_contents($resultoutput);
 					$errorStream = ssh2_fetch_stream($resultoutput, SSH2_STREAM_STDERR);
+					stream_set_blocking($errorStream, true);
 					$errorresult = stream_get_contents($errorStream);
 					fclose($resultoutput);
 				}

@@ -434,7 +434,7 @@ class Nut_free extends eqLogic
         }
     }
 
-    function getCaseAction($paramaction)
+    public function getCaseAction($paramaction)
     {
         $ip              = $this->getConfiguration('addressip');
         $UPS_auto_select = $this->getConfiguration('UPS_auto_select');
@@ -451,9 +451,7 @@ class Nut_free extends eqLogic
             if (!ssh2_auth_password($connection, $user, $pass)) {
                 log::add('Nut_free', 'error', 'Authentification SSH KO pour ' . $equipement);
                 $cnx_ssh = 'KO';
-            } else {
-                
-            }
+            } 
         }
     }
 

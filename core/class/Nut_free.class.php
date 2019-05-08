@@ -99,6 +99,12 @@ class Nut_free extends eqLogic
             'unite'     => 'V',
         ),
         array(
+            'name'      => 'Température de la batterie',
+            'logicalId' => 'batt_temp',
+            'cmd'       => 'battery.temperature',
+            'unite'     => '°C',
+        ),
+        array(
             'name'      => 'Charge onduleur',
             'logicalId' => 'ups_load',
             'cmd'       => 'ups.load',

@@ -115,6 +115,15 @@
 			$('#batt_volt#id#').append('<span data-cmd_id="#batt_voltid#" class="history cursor">#batt_volt#</span>');
 		}
     </script>
+	<div class="tooltips"  data-cmd_id="#batt_tempid#" style="margin-left:5px;display: #batt_temp_display#;">
+			<span title="Température de la batterie (batt_temp)" style="width:15px;">Température de la batterie: </span>
+			<span id="batt_temp#id#"></span><span> °C</span>
+	</div>
+	<script>
+		if ('#cnx_ssh#' == 'OK' || '#cnx_ssh#' == 'No') {
+			$('#batt_temp#id#').append('<span data-cmd_id="#batt_tempid#" class="history cursor">#batt_temp#</span>');
+		}
+    </script>
 	<div class="tooltips"  data-cmd_id="#ups_loadid#" style="margin-left:5px;display: #ups_load_display#;">
 			<span title="Charge Onduleur (ups_load)" style="width:15px;">Charge de l'onduleur: </span>
 			<span id="ups_load#id#"></span><span> %</span>
